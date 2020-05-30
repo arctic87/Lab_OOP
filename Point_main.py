@@ -3,7 +3,7 @@ from Point import Point
 from Point_3d import Point3d
 from Point_triangle import Triangle
 
-#Создаем 2 точки и определяем расстояние
+#Создаем 2 точки и определяем расстояние между ними
 p1 = Point3d(10, 12, 24)
 p2 = Point3d(15, 25, 50)
 p1.showInfo()
