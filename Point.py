@@ -1,7 +1,6 @@
 
 # -*- coding: utf-8 -*-
 
-
 class Point:
 
     def __init__(self, X, Y):
