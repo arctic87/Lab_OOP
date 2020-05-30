@@ -5,7 +5,7 @@ class Return:
     def return_path(self, current_node, maze):
         path = []
         no_rows, no_columns = np.shape(maze)
-        # здесь мы инициализируем результирующий лабиринт с -1 в каждой позиции
+        # здесь мы инициализируем результирующий лабиринт с -1 в каждой позиции(текущей позиции)
         result = [[-1 for i in range(no_columns)] for j in range(no_rows)]
         current = current_node
         while current is not None:
