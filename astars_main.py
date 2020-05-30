@@ -17,6 +17,6 @@ if __name__ == '__main__':
     cost = 1  # кол-во позиций проходимых за ход
 
     path = Search.search(None, maze, cost, start, end)
-    #print(path)
+    #показываем путь
 
     print('\n'.join([''.join(["{:" ">3d}".format(item) for item in row])for row in path]))
