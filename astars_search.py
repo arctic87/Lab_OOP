@@ -88,10 +88,10 @@ class Search:
                 # добавим новый узел
                 children.append(new_node)
 
-            # Loop through children
+            # дочерние узлы
             for child in children:
 
-                # Child is on the visited list (search entire visited list)
+                # поиск по всему списку посещений
                 if len([visited_child for visited_child in visited_list if visited_child == child]) > 0:
                     continue
 
