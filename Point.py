@@ -1,9 +1,8 @@
-
 # -*- coding: utf-8 -*-
 
 class Point:
-
-    def __init__(self, X, Y):
+    #Задаем координаты
+    def __init__(self, X=0.0, Y=0.0):
         self.coordX = X
         self.coordY = Y
 
@@ -12,9 +11,3 @@ class Point:
 
     def getY(self):
         return self.coordY
-
-    def setX(self, a):
-        self.coordX = a
-
-    def setY(self, b):
-        self.coordY = b
