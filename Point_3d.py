@@ -5,30 +5,19 @@ from Point import Point
 class Point3d(Point):
 
     def __init__(self, X=0.0, Y=0.0, Z=0.0):
-        
-        #наследование из класс Point(точка-2D)
+        # Наследование от класса Point
         Point.__init__(self, X, Y)
         self.coordZ = Z
 
     def getZ(self):
         return self.coordZ
 
-    def getXYZ(self):
-        return self.coordX, self.coordY, self.coordZ
+    #Вычисление расстояние между точками
+    def distanceTo(self, Point_2):
+        return math.sqrt(((self.coordX - Point_2.getX()) ** 2) + ((self.coordY - Point_2.getY()) ** 2) + ((self.coordZ - Point_2.getZ()) ** 2))
 
-    def setZ(self, c):
-        self.coordZ = c
-
-    def equals(self, O):
-        return O[0] == self.coordX, O[1] == self.coordY, O[2] == self.coordZ
-    
-    #расчет дистанции между точками
-    def distance(self, d):
-        return math.sqrt(((d[0] - self.coordX) ** 2) + ((d[1] - self.coordY) ** 2) + ((d[2] - self.coordZ) ** 2))
-    
-    #вывод координат точки
+    #Вывод координат
     def showInfo(self):
-        print("X=",self.coordX, "Y=",self.coordY, "Z=",self.coordZ)
-
+        print(self.coordX, self.coordY, self.coordZ)
 
 
