@@ -1,21 +1,29 @@
 from bs4 import BeautifulSoup
-import requests
+from urllib.request import urlopen
 import re
 
+
+
 class Parser:
-    def url_reguest(self, request):
-        url = requests.get(request)
-        
-        #используем фреймворк
-        soup = BeautifulSoup(url.text, "html.parser")
+    # получение начальной страницы
+    def url_request(self, url):
+        page = urlopen(url)
+
+        soup = BeautifulSoup(page.read(), "html.parser")
+        # Задаем список ссылок
         links = []
-        
-        #ищем ссылки с заданными параметрами
+
+        # Выборка ссылок со страницы
         for link in soup.findAll('a'):
             link = link.get('href')
             if link.startswith('http'):
                 links.append(link)
-
+            else:
+                break
         return links
+
+
+
+
 
 
