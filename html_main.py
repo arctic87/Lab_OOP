@@ -5,6 +5,7 @@ url = 'http://google.com/'
 
 # получение списка ссылок из класса Parser
 links = Parser.url_request(None, url)
+
 # показываем ссылки
 print("Ссылки с ресурса", url)
 for link in links:
