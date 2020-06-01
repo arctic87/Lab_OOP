@@ -10,7 +10,7 @@ print("Ссылки с ресурса", url)
 for link in links:
     print(" ->", link[0])
 
-# получение списка ссылок второго уровня
-links_2 = Parser.url_request(None, link[0])
-for link2 in links_2:
-    print("второй уровень ->", link2[0])
+    # получение списка ссылок второго уровня
+    links_2 = Parser.url_request(None, link[0])
+    for link2 in links_2:
+        print("второй уровень ->", link2[0])
