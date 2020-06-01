@@ -33,7 +33,7 @@ class Search:
                 [1, 1],  # идем вниз-вправо
                 [0, 1]]  # идем вправо
 
-        # найдем лабиринт, сколько строк и столбцов
+        # лабиринт, кол-во строк и столбцов
         no_rows, no_columns = np.shape(maze)
 
         # Цикл, пока не найдем конец
@@ -88,6 +88,27 @@ class Search:
                 # добавим новый узел
                 children.append(new_node)
 
+            # Дочерние узлы
+            for child in children:
+
+                # Поиск по всему списку посещений
+                if len([visited_child for visited_child in visited_list if visited_child == child]) > 0:
+                    continue
+
+                # создаем f, g, и h значения
+                child.g = current_node.g + cost
+                #здесь расчитываются эвристические затраты с использованием эвклидового расстояния
+                child.h = (((child.position[0] - end_node.position[0]) ** 2) +
+                           ((child.position[1] - end_node.position[1]) ** 2))
+
+                child.f = child.g + child.h
+
+                # дочерний узел уже в списке не посещенных и значения g уже понижено
+                if len([i for i in yet_to_visit_list if child == i and child.g > i.g]) > 0:
+                    continue
+
+                # добавление в список еще не посещенных
+                yet_to_visit_list.append(child)
             # дочерние узлы
             for child in children:
 
@@ -103,7 +124,7 @@ class Search:
 
                 child.f = child.g + child.h
 
-                # дочерний узел уже в списке не посещенных и значения g уже понижено
+                # дочерний узел уже в списке не посещенных и значения g понижено
                 if len([i for i in yet_to_visit_list if child == i and child.g > i.g]) > 0:
                     continue
 
