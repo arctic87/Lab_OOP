@@ -1,21 +1,23 @@
-from html_parser import Parser
-
-# начальная страница
-url = 'http://google.com/'
-
-# получение списка ссылок из класса Parser
-links = Parser.url_request(None, url)
-
-# показываем ссылки
-print("Ссылки с ресурса", url)
-for link in links:
-    print(" ->", link[0])
-
-    # получение списка ссылок второго уровня
-    links_2 = Parser.url_request(None, link[0])
-    for link2 in links_2:
-        print("второй уровень ->", link2[0])
+from bs4 import BeautifulSoup
+from urllib.request import urlopen
+import re
 
 
+class Parser:
+    def url_request(self, url):
+        # получение начальной страницы
+        page = urlopen(url)
+        soup = BeautifulSoup(page.read(), "html.parser")
+        # Задаем список ссылок
+        links = []
+
+        # Выборка ссылок со страницы
+        for link in soup.find_all('a'):
+            link = link.get('href')
+            if link.startswith("http"):
+                links.append([link])
+            else:
+                break
+        return links
 
 
