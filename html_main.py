@@ -1,18 +1,16 @@
 from html_parser import Parser
 
-#начальная страница
-url = 'http://news.google.com/'
+# начальная страница
+url = 'http://google.com/'
 
-#собираем данные с сайта
-list1 = Parser.url_reguest(None, url)
-list2 = Parser.url_reguest(None, url)
+# получение списка ссылок из класса Parser
+links = Parser.url_request(None, url)
+# показываем ссылки
+print("Ссылки с ресурса", url)
+for link in links:
+    print(" ->", link[0])
 
-#находим новые ссылки путем вычитания второго списка из первого
-search_different = list(set(list1)-set(list2))
-#выводим новые ссылки
-print(search_different)
-
-print(list1[5])
-#выводим данные со второго уровня сайтов
-list_level2 = Parser.url_reguest(None, list1[5])
-print(list_level2)
+# получение списка ссылок второго уровня
+links_2 = Parser.url_request(None, link[0])
+for link2 in links_2:
+    print("второй уровень ->", link2[0])
