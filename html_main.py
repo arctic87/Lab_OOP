@@ -1,12 +1,15 @@
 from html_parser import Parser
 
+#начальная страница
+url = 'http://news.google.com/'
+
 #собираем данные с сайта
-list1 = Parser.url_reguest(None, "http://google.com")
-list2 = Parser.url_reguest(None, "http://google.com")
+list1 = Parser.url_reguest(None, url)
+list2 = Parser.url_reguest(None, url)
 
-#ищем разницу между списками
+#находим новые ссылки путем вычитания второго списка из первого
 search_different = list(set(list1)-set(list2))
-
+#выводим новые ссылки
 print(search_different)
 
 print(list1[5])
